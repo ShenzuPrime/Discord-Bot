@@ -7,10 +7,10 @@ from discord import Game
 
 TOKEN = "NTM1MzY2NTg0NzAxODEyNzM3.DyHHDQ.ObETFzF81gPRWtPikDzSslovubI"
 
-client = commands.Bot(command_prefix='?')
+client = commands.Bot(command_prefix='!')
 
-@client.command(name="8ball", pass_context=True)
-async def eight_ball(context):
+@client.command(name="8ball")
+async def eight_ball():
     possible_responses = [
         'No',
         'Yes',
@@ -19,23 +19,16 @@ async def eight_ball(context):
         'Very Doubtful',
         'Cannot predict now',
     ]
-    print("it actually works")
-    await client.say(conext.message.author + ", " + random.choice(possible_responses))
+    await client.say(random.choice(possible_responses))
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    if message.content.startswith("!!8ball"):
-        possible_responses = [
-            'No',
-            'Yes',
-            'Ask Again later',
-            'Outlook good',
-            'Very Doubtful',
-            'Cannot predict now',
-        ]
-        await client.send_message(message.channel, random.choice(possible_responses))
+@client.command(name="roll")
+async def dice_roll(number:int):
+    await client.say(random.randint(0,number))
+
+@client.command(name="choose")
+async def randomchoose(arguement):
+    print(arguement.split(','))
+    await client.say(random.choice(arguement.split(',' )))
 
 @client.event
 async def on_ready():
