@@ -26,13 +26,16 @@ async def dice_roll(number:int):
     await client.say(random.randint(0,number))
 
 @client.command(name="choose")
-async def randomchoose(arguement):
-    print(arguement.split(','))
-    await client.say(random.choice(arguement.split(',' )))
+async def randomchoose(*arg):
+    options = ""
+    for i in arg:
+        options += (" "+i)
+    print(options.split(';'))
+    await client.say(random.choice(options.split(';')))
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=Game(name="Bots are Stupid"))
-    print("Shit is working I guess")
+    await client.change_presence(game=Game(name="!help for cmds"))
+    print("Up and running")
 
 client.run(TOKEN)
