@@ -12,5 +12,17 @@ client = commands.Bot(command_prefix='~')
 async def ping(ctx):
     await ctx.send('pong')
 
+@client.command(name='8ball')
+async def eightball(ctx):
+    holder = ['yes', 'no','try again']
+    await ctx.send(random.choice(holder))
+
+@client.command()
+async def choose(ctx,*args):
+    holder = ""
+    for i in args:
+        holder += (" "+i)
+    await ctx.send(random.choice(holder.split(',')))
+
+
 client.run(TOKEN)
-print("everything is working")
