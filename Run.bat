@@ -1,2 +1,2 @@
-python C:\Users\Ian\Documents\GitHub\Discord-Bot\Bot.py
+python C:\Users\Ian\Desktop\Discord-Bot\Bot.py
 pause
