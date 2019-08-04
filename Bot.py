@@ -24,5 +24,12 @@ async def choose(ctx,*args):
         holder += (" "+i)
     await ctx.send(random.choice(holder.split(',')))
 
+@client.command()
+async def gchange(ctx,*args):
+    holder = ""
+    for i in args:
+        holder += (" "+i)
+    game = discord.Game(holder)
+    await client.change_presence(status=discord.Status.idle, activity=game)
 
 client.run(TOKEN)
